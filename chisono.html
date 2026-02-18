@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi sono | Martina Villareale Psicologa</title>
+  <style>
+    :root {
+      --header-bg: #e8e6e3;
+      --accent: #830c4f;
+      --text-main: #000000;
+      --header-height: 96px;
+      --max-width: 1100px;
+      --content-padding: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0 auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: var(--text-main);
+      line-height: 1.15;
+      background: #ffffff;
+    }
+
+    header.site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-height);
+      background: var(--header-bg);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px 12px 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .brand img {
+      width: 95px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .brand .name {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0;
+      padding: 0;
+    }
+
+    .brand .role {
+      font-size: 25px;
+      margin: 0;
+      padding: 0;
+      color: var(--accent);
+    }
+
+    nav.header-nav a {
+      margin-left: 18px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+/* Dropdown header elegante */
+/* Dropdown header elegante con freccetta piccola */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown .dropbtn {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0;
+  margin-left: 18px;
+  position: relative;       /* necessario per la freccetta */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;                 /* spazio tra testo e freccetta */
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* Freccetta piccola accanto al testo */
+.dropdown .dropbtn::after {
+  content: "▼";             /* simbolo della freccetta */
+  font-size: 12px;          /* più piccolo della parola */
+  color: var(--accent);
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+/* Ruota la freccetta quando hover sul dropdown */
+.dropdown:hover .dropbtn::after {
+  transform: rotate(180deg);
+}
+
+/* Contenuto del menu a tendina */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  z-index: 1001;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Mostra il menu al passaggio del mouse */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stile dei link nel menu a tendina */
+.dropdown-content a {
+  display: block;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  transform: translateX(4px);
+}
+
+/* Mobile: menu diventa statico e sempre visibile */
+@media (max-width: 900px) {
+  .dropdown-content {
+    position: static;
+    display: block;
+    opacity: 1;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #004080;
+      text-align: center;
+    }
+
+    .chi-sono-section {
+      margin-top: 30px;
+      padding: 40px 0 80px;
+    }
+
+    .chi-sono-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+
+    /* Titolo */
+    .chi-sono-text h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 40px;
+      color: var(--accent);
+      margin-bottom: 70px;
+      margin-top: 20px;
+      text-align: center;
+      scroll-margin-top: 110px;
+    }
+
+    /* Paragrafi */
+    .chi-sono-text p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: justify;
+      font-family: Calibri, sans-serif;
+    }
+
+    /* Foto gruppo */
+    .chi-sono-photo-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .chi-sono-photo-group .chi-sono-photo {
+      width: 35%;
+      max-width: 200px;
+    }
+
+    .chi-sono-photo-group .chi-sono-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Box frase */
+    .chi-sono-quote {
+      background: #e2e1e0;
+      padding: 20px 30px;
+      border-left: 4px solid var(--accent);
+      margin-top: 50px;
+      justify-content: center;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--accent);
+      margin: 30px 0;
+      border-radius: 6px;
+    }
+.chi-sono-photo.photo3 {
+  width: 100%;
+  max-width: 300px; /* puoi regolare la dimensione massima */
+  margin: 30px auto;
+  margin-top: 90px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+}
+
+.chi-sono-photo.photo3 img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+    /* Pulsante */
+    .chi-sono-btn {
+      display: block;
+      width: fit-content;
+      margin: 40px auto;
+      margin-top: 90px;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: 0.3s ease;
+      font-family: "Playfair Display", serif;
+    }
+
+    .chi-sono-btn:hover {
+      background: #a21764;
+    }
+
+    /* Sezione dei tre rettangoli a larghezza piena */
+.credits-section {
+  width: 100%;
+  padding: 40px 0;
+  background: transparent; /* o un colore, se ti serve */
+}
+
+/* L’inner deve stare largo, non come il container del testo */
+.credits-inner {
+  max-width: 1200px;    /* o quanto preferisci */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* Stile dei rettangoli */
+.credit-box {
+  background: #e8e4e1;
+  padding: 20px;
+  width: 280px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .chi-sono-photo {
+        width: 85%;
+      }
+
+      .chi-sono-text p {
+        font-size: 18px;
+      }
+    }
+
+
+/* --- SEZIONE CREDENZIALI --- */
+.credits-section {
+  width: 100%;
+  padding: 40px 0; 
+  margin: 0;
+}
+
+.credits-inner {
+  max-width: 1400px; /* grande, così i box sono molto larghi */
+  margin: 0 auto;
+  padding: 0 10px; /* un leggerissimo margine laterale */
+  
+  display: flex;
+  gap: 26px; /* separazione tra i box */
+}
+
+.credit-box {
+  background: #e8e6e3;
+  flex: 1;
+  padding: 25px 26px 25px 26px;
+  
+  border-radius: 18px; /* bordi arrotondati */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+}
+
+.credit-box img {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  object-fit: contain;
+}
+
+.credit-box p {
+  margin-top: 65px;
+  font-size: 17px;
+  line-height: 1.30;
+  font-weight: 450;
+  color: #333;
+  font-family: Calibri, sans-serif;
+}
+
+/* Mobile: se vuoi posso tenerli orizzontali, ma per ora li metto in verticale per non romperli */
+@media (max-width: 900px) {
+  .credits-inner {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1024px){
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px){
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-item img {
+    height: 200px;
+  }
+  .service-item span {
+    font-size: 20px;
+  }
+}
+
+/* Sezione studi */
+.studios-section {
+  margin-top: 50px;
+  width: 100%; /* assicura che il container possa usare tutta la larghezza */
+}
+.studios-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: nowrap; /* NON farle andare a capo */
+  max-width: 600px; /* larghezza totale del gruppo foto */
+  margin: 0 auto; /* centra il gruppo nella pagina */
+}
+.studio-photo {
+  text-align: center;
+  width: 270px;      /* larghezza fissa */
+}
+.studio-photo img {
+  width: 100%;
+  height: 280px;     /* altezza fissa uguale per tutte le foto */
+  object-fit: cover; /* ritaglia l’immagine senza deformarla */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.studio-photo p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #555;
+}
+/* Mobile: le foto diventano una sotto l'altra */
+@media (max-width: 600px) {
+  .studios-container {
+    flex-direction: column;
+    max-width: 90%; /* più stretto su mobile */
+  }
+
+  .studio-photo {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
+  footer.site-footer {
+  background: var(--header-bg);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px;   /* ↑ più spazio sopra e sotto */  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+  /* --- RESPONSIVE --- */
+  @media (max-width:900px){
+    .hero{
+      flex-direction:column;
+      align-items:center;
+    }
+    .hero .left{
+      margin-left:0;
+      align-items:center;
+      padding-left:0;
+    }
+    .hero .right{
+      margin-top:40px;
+    }
+    .about{flex-direction:column}
+    .about .photo{width:100%;flex:0 0 auto}
+  }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" role="banner">
+  <div class="header-left" style="max-width: none; padding:0;">
+    <div class="brand" style="display:flex;align-items:center;gap:4px">
+      <img src="images/logo.png" alt="Logo Martina Villareale">
+      <div>
+        <p class="name">Martina Villareale</p>
+        <p class="role">Psicologa</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="header-nav" aria-label="Menu principale">
+    <a href="Home.html">Home</a>
+
+    <div class="dropdown">
+      <a href="chisono.html" class="dropbtn">Chi sono</a>
+      <div class="dropdown-content">
+        <a href="chisono.html#mio-approccio">Il mio approccio</a>
+      </div>
+    </div>
+
+    <a href="dicosamioccupo.html">Di cosa mi occupo</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+</header>
+
+
+  <main>
+    <section class="chi-sono-section">
+      <div class="chi-sono-container">
+
+        <div class="chi-sono-text">
+          <h2>Chi sono</h2>
+
+          <p>Mi chiamo <strong>Martina Villareale</strong>, sono psicologa clinica dell'età evolutiva e psicoterapeuta in formazione ad orientamento psicoanalitico-relazionale.</p>
+
+          <p>Ho iniziato il mio percorso di studi nel 2014, iscrivendomi al corso di laurea in Psicologia presso l’Università Cattolica di Milano, scegliendo successivamente l’indirizzo di Psicologia dello sviluppo e processi di tutela. Dopo la laurea ho svolto un anno di tirocinio, suddiviso in due esperienze formative: presso il Centro Ti Ama e presso il Centro di Psicoterapia per la Famiglia Mara Selvini Palazzoli. A seguito del superamento dell’esame di stato, mi sono iscritta all’Albo A degli Psicologi della Lombardia con il numero 26542. La mia formazione è proseguita con l’iscrizione alla Scuola di Psicoterapia del Bambino e dell’Adolescente - Psiba, mentre parallelamente ho iniziato la mia attività clinica.</p>
+
+          <p>Mi sono occupata di psicologia scolastica collaborando con scuole e insegnanti per supportare il benessere emotivo degli studenti. Ho creato e realizzato progetti legati alle emozioni per aiutare bambini e ragazzi a riconoscere, esprimere e gestire ciò che provano. Attraverso attività pratiche, giochi e spazi di dialogo, li sostengo nello sviluppo di competenze emotive fondamentali.</p> 
+          <br>
+
+          <!-- Foto 2 affiancate -->
+          <div class="chi-sono-photo-group">
+            <div class="chi-sono-photo">
+              <img src="images/foto2.png" alt="Foto 2">
+            </div>
+            <div class="chi-sono-photo">
+              <img src="images/foto2b.jpeg" alt="Foto 2b">
+            </div>
+            <div class="chi-sono-photo">
+              <img src="images/foto2c.jpeg" alt="Foto 2c">
+            </div>
+          </div>
+         
+          <br>
+          <p>Nel mio lavoro accompagno bambini, adolescenti e famiglie offrendo un luogo sicuro in cui dar voce a ciò che spesso resta silenzioso. Ogni percorso è unico: nasce dall’incontro tra la tua storia e l’ascolto attento della tua esperienza emotiva.</p>
+          <br>
+          <div class="chi-sono-quote">
+            " &nbsp;È nel gioco, e solo nel gioco, che il bambino o l’adulto può essere creativo e utilizzare l’intera personalità; 
+            ed è solo nell’essere creativo che l’individuo scopre il proprio Sé.&nbsp; " &nbsp;&nbsp; (Donald W. Winnicott in Playing and Reality, 1971)
+          </div>
+
+          <!-- Foto 3 -->
+          <div class="chi-sono-photo photo3">
+            <img src="images/Terapia.jpeg" alt="Foto 3">
+          </div>
+         <br>
+          <p>Al centro del mio lavoro ci sei tu: la tua esperienza, la tua voce, i tuoi tempi. Il mio compito è accompagnarti in questo viaggio con delicatezza e professionalità.</p>
+
+          <a href="contatti.html" class="chi-sono-btn">PARLIAMONE</a>
+        </div>
+      </div>
+    </section>
+</main>
+
+
+<section class="credits-section">
+  <div class="credits-inner">
+
+    <div class="credit-box">
+      <img src="images/laurea.jpeg" alt="Laurea">
+      <p><br>Laurea triennale in Scienze e Tecniche Psicologiche  Università Cattolica di Milano<br><br>
+      Laurea in Psicologia dello Sviluppo e Processi di Tutela  Università Cattolica di Milano<br><br>
+      Tirocinio post lauream (1000 ore)</p>
+    </div>
+
+    <div class="credit-box">
+      <img src="images/opl.jpeg" alt="Albo Psicologi">
+      <p><br>Esame di stato <br><br>
+      Iscrizione Albo A degli Psicologi della Lombardia <br> n. 26542</p>
+    </div>
+
+    <div class="credit-box">
+      <img src="images/specializzazione1.png" alt="Specializzazione">
+      <p><br>In corso: specializzazione in Psicoterapia Psicoanalitica del bambino e dell’adolescente - Istituto PSIBA</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="chi-sono-section">
+    <div class="chi-sono-container">
+      <div class="chi-sono-text">
+
+<h2 id="mio-approccio">Il mio approccio</h2>
+
+        <p>
+          Il mio lavoro si fonda sull’approccio psicoanalitico relazionale, un orientamento che 
+          considera la relazione terapeutica il cuore del percorso di cura. 
+          In questo approccio, i sintomi, le difficoltà emotive e relazionali non vengono letti 
+          come “errori” da correggere, ma come espressioni di una storia personale, di modalità 
+          apprese nel tempo per adattarsi alle esperienze vissute. La relazione che si crea nel 
+          setting terapeutico diventa uno spazio sicuro in cui queste modalità possono essere osservate, 
+          comprese e, gradualmente, trasformate.
+          Il cambiamento, in questa prospettiva, non avviene perché si impara “cosa fare”, 
+          ma perché si fa un’esperienza nuova di sé all’interno della relazione.<br>
+         <br> Per questo motivo, nel mio modo di lavorare, hanno grande importanza:<br>
+- l’ascolto profondo e non giudicante<br>
+- l’attenzione a ciò che accade qui e ora nella relazione terapeutica<br>
+- il rispetto dei tempi della persona<br>
+- la costruzione di un clima di fiducia e sicurezza<br>
+<br>
+Ogni percorso è unico, perché unica è la storia di chi ho davanti.
+Viene data particolare importanza alla fase di consultazione, 
+che acquisisce già una valenza terapeutica e viene vista come fondamentale momento diagnostico 
+e prognostico al fine di poter individuare l’intervento terapeutico più adeguato.<br>
+        </p>
+
+        <p>
+          Questo orientamento teorico-clinico si colloca nell’area della psicoanalisi relazionale 
+      e intersoggettiva, con un dialogo aperto anche con i contributi delle neuroscienze affettive.
+      Si è sviluppato a partire dal pensiero di autori come Donald Winnicott, John Bowlby e Wilfred Bion, 
+      e si è arricchito successivamente grazie ai contributi di Daniel Stern, Thomas Ogden e Philip Bromberg. 
+      In Italia, questo filone teorico trova importanti riferimenti nel lavoro di Senise, Novelletto e Ammanniti.
+
+      <br> Alla base di questa prospettiva vi è l’idea che la mente si sviluppi all’interno di relazioni reali, 
+non soltanto fantasmatiche. Per questo motivo anche l’inconscio viene inteso come profondamente relazionale: 
+nasce, si struttura e può trasformarsi solo attraverso nuove esperienze relazionali.<br>
+
+<br>Questa visione orienta il mio modo di comprendere la sofferenza psicologica e di lavorare nella relazione terapeutica, 
+intesa come uno spazio vivo in cui possono emergere, essere riconosciute e gradualmente trasformate le modalità relazionali 
+costruite nel corso della storia personale.
+        </p>
+
+<!-- Foto degli studi -->
+<div class="studios-section" style="margin-top: 50px;">
+  <div class="studios-container" style="display:flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+    
+    <div class="studio-photo" style="text-align:center; max-width: 400px;">
+      <img src="images/1.jpeg" alt="Studio 1" style="width:100%; border-radius: 12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+      <p style="margin-top: 10px; font-size: 16px; color:#555;">Studio di Milano</p>
+    </div>
+
+    <div class="studio-photo" style="text-align:center; max-width: 400px;">
+      <img src="images/studio2.jpeg" alt="Studio 2" style="width:100%; border-radius: 12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+      <p style="margin-top: 10px; font-size: 16px; color:#555;">Studio di Bernareggio</p>
+    </div>
+
+  </div>
+</div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+
+ <footer class="site-footer" role="contentinfo">
+  <div>
+    &copy; 
+    <span style="color:var(--accent); font-weight:700;">
+      Martina Villareale </span> - Psicologa
+    <br>
+    Iscrizione Albo Psicologi Lombardia n. 26542
+    <br>
+    P. IVA 13768620968
+  </div>
+</footer>
+</body>
+</html>
+
