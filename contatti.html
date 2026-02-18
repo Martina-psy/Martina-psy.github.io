@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti | Martina Villareale Psicologa</title>
+  <style>
+  :root{
+    --header-bg: #e8e6e3;
+    --accent: #830c4f;
+    --text-main: #000000;
+    --header-height: 96px;
+    --max-width: 1100px;
+    --content-padding: 24px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color:var(--text-main);
+    line-height:1.15;
+    background:#ffffff;
+  }
+
+  /* --- HEADER --- */
+  header.site-header{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:var(--header-height);
+    background:var(--header-bg);
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 12px 24px 12px 8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    z-index:1000;
+  }
+  .header-left{display:flex;align-items:center;gap: 4px}
+  .brand img{
+    width:95px;height:80px;object-fit:cover;border-radius:8px;
+  }
+  .brand .name{font-size:40px;font-weight:700;color:var(--accent);margin:0;padding:0;}
+  .brand .role{font-size:25px;margin:0;padding:0;color:var(--accent)}
+  nav.header-nav a{
+    margin-left:18px;text-decoration:none;color:var(--accent);font-weight:600;
+  }
+/* Dropdown header elegante */
+/* Dropdown header elegante con freccetta piccola */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown .dropbtn {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0;
+  margin-left: 18px;
+  position: relative;       /* necessario per la freccetta */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;                 /* spazio tra testo e freccetta */
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* Freccetta piccola accanto al testo */
+.dropdown .dropbtn::after {
+  content: "▼";             /* simbolo della freccetta */
+  font-size: 12px;          /* più piccolo della parola */
+  color: var(--accent);
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+/* Ruota la freccetta quando hover sul dropdown */
+.dropdown:hover .dropbtn::after {
+  transform: rotate(180deg);
+}
+/* Contenuto del menu a tendina */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  z-index: 1001;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+/* Mostra il menu al passaggio del mouse */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stile dei link nel menu a tendina */
+.dropdown-content a {
+  display: block;
+  padding: 12px 18px;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.dropdown-content a:hover {
+  transform: translateX(4px);
+}
+/* Mobile: menu diventa statico e sempre visibile */
+@media (max-width: 900px) {
+  .dropdown-content {
+    position: static;
+    display: block;
+    opacity: 1;
+    transform: none;
+    box-shadow: none;
+  }
+}
+  /* --- MAIN CONTENT --- */
+  main {
+    max-width: 1000px;
+    margin: 120px auto 60px auto;
+    background: #e8e6e3;
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  h1 {
+    color: #6d0a43;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 25px;
+  }
+  h2 {
+    color: #000000;
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 18px;
+  }
+
+  /* --- CONTATTI --- */
+  .contact-info {
+    margin-top: 20px;
+    line-height: 1.6;
+  }
+
+  .contact-top {
+    text-align: left;
+  }
+
+  .contact-top a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-top a:hover {
+    text-decoration: underline;
+  }
+
+  .titolo-contatti {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 40px 0 30px 0;
+    color: var(--accent);
+  }
+
+  /* --- BOX SEDI --- */
+  .contact-locations {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .location-box {
+    flex: 1;
+    min-width: 250px;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .location-box a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .location-box a:hover {
+    text-decoration: underline;
+  }
+
+  /* --- FORM --- */
+  form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input, textarea {
+    padding: 12px;
+    border: 1px solid #e8e6e3;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: #6d0a43;
+  }
+
+    footer.site-footer {
+  background: var(--header-bg);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+}
+
+  /* --- RESPONSIVE --- */
+  @media (max-width:900px){
+    .hero{
+      flex-direction:column;
+      align-items:center;
+    }
+    .hero .left{
+      margin-left:0;
+      align-items:center;
+      padding-left:0;
+    }
+    .hero .right{
+      margin-top:40px;
+    }
+    .about{flex-direction:column}
+    .about .photo{width:100%;flex:0 0 auto}
+  }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+  <div class="header-left" style="max-width: none; padding:0;">
+    <div class="brand" style="display:flex;align-items:center;gap:4px">
+      <img src="images/logo.png" alt="Logo Martina Villareale">
+      <div>
+        <p class="name">Martina Villareale</p>
+        <p class="role">Psicologa</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="header-nav" aria-label="Menu principale">
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+      <a href="chisono.html" class="dropbtn">Chi sono</a>
+      <div class="dropdown-content">
+        <a href="chisono.html#mio-approccio">Il mio approccio</a>
+      </div>
+    </div>
+
+    <a href="dicosamioccupo.html">Di cosa mi occupo</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+</header>
+
+  <main>
+    <h1>Ogni percorso inizia da un primo passo<br></h1><br><br>
+    <h2>Compila il modulo qui sotto o utilizza i miei recapiti diretti:</h2>
+
+    <!-- CONTATTI -->
+    <div class="contact-info">
+      <div class="contact-top">
+        <p>📧 E-mail: <a href="mailto:martinavillareale.psy@gmail.com">martinavillareale.psy@gmail.com</a></p> 
+        <p>📞 Telefono: <a href="tel:+393315218086">+39 331 521 8086</a></p>
+      </div>
+
+      <p class="titolo-contatti"><b>Ricevo su appuntamento a:</b></p>
+
+      <div class="contact-locations">
+        <div class="location-box">
+          📍 <strong>Milano</strong><br>
+          <a href="https://www.google.com/maps/place/Via+S.+Gregorio,+45,+20124+Milano" target="_blank">
+            Via San Gregorio 45
+          </a>
+        </div>
+
+        <div class="location-box">
+          📍 <strong>Bernareggio (MB)</strong><br>
+          <a href="https://www.google.com/maps/place/Via+Piemonte,+9,+20881+Bernareggio+MB" target="_blank">
+            Via Piemonte 9
+          </a>
+        </div>
+      </div>
+    </div>
+<br><br><br>
+
+    <!-- FORM -->
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <label for="name">Nome e Cognome</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="_replyto" required>
+
+      <label for="message">Messaggio</label>
+      <textarea id="message" name="message" rows="8" required></textarea>
+<br>
+      <button type="submit">Invia Messaggio</button>
+    </form>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+  <div>
+    &copy; 
+    <span style="color:var(--accent); font-weight:700;">
+      Martina Villareale </span> - Psicologa
+    <br>
+    Iscrizione Albo Psicologi Lombardia n. 26542
+    <br>
+    P. IVA 13768620968
+  </div>
+</footer>
+
+</body>
+</html>
